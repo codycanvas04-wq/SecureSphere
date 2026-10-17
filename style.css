@@ -1,0 +1,1526 @@
+
+/* =========================================
+   SECURESPHERE
+   Anime / Chibi Inspired Homepage
+   ========================================= */
+
+
+/* 1. COLOURS AND BASIC SETTINGS */
+
+:root {
+    --navy: #101B3D;
+    --blue: #398BFF;
+    --purple: #9167F8;
+    --pink: #FF8EB5;
+    --cyan: #70E1F5;
+    --pale-blue: #EAF5FF;
+    --white: #FFFFFF;
+    --text: #273451;
+    --muted: #71809B;
+    --border: #E5EAF5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #FFFFFF;
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: #D9CBFF;
+    color: var(--navy);
+}
+
+
+/* 2. NAVIGATION BAR */
+
+.navbar {
+    min-height: 82px;
+    padding: 16px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid #EEF1FA;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo > span:last-child {
+    color: var(--blue);
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: white;
+    font-size: 23px;
+    box-shadow: 0 5px 14px #398BFF40;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar nav a {
+    font-size: 14px;
+    font-weight: 700;
+    color: #53617C;
+    transition: color 0.25s ease;
+}
+
+.navbar nav a:hover {
+    color: var(--blue);
+}
+
+.nav-button {
+    background: var(--navy);
+    color: white;
+    padding: 13px 21px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 800;
+    transition: transform 0.25s, background 0.25s;
+}
+
+.nav-button:hover {
+    background: var(--blue);
+    transform: translateY(-3px);
+}
+
+
+/* 3. HERO SECTION */
+
+.hero {
+    position: relative;
+    min-height: 640px;
+    padding: 80px 7% 85px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 80% 15%, #5A64CB 0%, transparent 35%),
+        radial-gradient(ellipse at 10% 100%, #253A80 0%, transparent 45%),
+        linear-gradient(125deg, #101B3D, #192957 60%, #253B70);
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: -230px;
+    left: 35%;
+    border-radius: 50%;
+    border: 1px solid #FFFFFF18;
+    box-shadow:
+        0 0 0 45px #FFFFFF08,
+        0 0 0 90px #FFFFFF05;
+    z-index: -1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    bottom: -150px;
+    right: 20%;
+    border-radius: 50%;
+    background: #8F70FF20;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 590px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s ease both;
+}
+
+.welcome-tag {
+    display: inline-block;
+    padding: 11px 15px;
+    margin-bottom: 27px;
+    border: 1px solid #FFFFFF30;
+    border-radius: 30px;
+    background: #FFFFFF0D;
+    color: #D6E5FF;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+}
+
+.hero h1 {
+    font-size: clamp(43px, 5.3vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, #75DFFF, #BBA3FF, #FFABD0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    max-width: 480px;
+    margin-top: 25px;
+    color: #D3DCF2;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 22px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 900;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.primary-button {
+    background: linear-gradient(110deg, #58B7FF, #9674FF);
+    color: white;
+    box-shadow: 0 10px 28px #398BFF35;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-4px);
+}
+
+.primary-button:hover {
+    box-shadow: 0 14px 32px #398BFF55;
+}
+
+.secondary-button {
+    border: 1px solid #FFFFFF40;
+    color: white;
+    background: #FFFFFF08;
+}
+
+.trust-note {
+    margin-top: 27px;
+    color: #C7D4F2;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+
+/* 4. CHARACTER ILLUSTRATION AREA */
+
+.hero-art {
+    min-height: 480px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+}
+
+.orbit {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border: 1px solid #FFFFFF2B;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.orbit-one {
+    width: 400px;
+    height: 400px;
+    animation: slowSpin 30s linear infinite;
+}
+
+.orbit-two {
+    width: 315px;
+    height: 315px;
+    border-style: dashed;
+    border-color: #8FCBFF65;
+    animation: slowSpin 40s linear infinite reverse;
+}
+
+.character-card {
+    width: min(310px, 80%);
+    min-height: 350px;
+    padding: 20px 18px 22px;
+    border: 1px solid #FFFFFF55;
+    border-radius: 35px;
+    background: linear-gradient(145deg, #FFFFFF25, #FFFFFF0B);
+    box-shadow: 0 25px 75px #00000025;
+    backdrop-filter: blur(12px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+.character-halo {
+    position: absolute;
+    width: 205px;
+    height: 205px;
+    top: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #72DFFF55, #BDA0FF65, #FF9EC655);
+    filter: blur(3px);
+}
+
+
+/* CSS-DRAWN CHIBI MASCOT */
+
+.mascot {
+    width: 200px;
+    height: 235px;
+    position: relative;
+    z-index: 2;
+    margin-top: 7px;
+}
+
+.face {
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    top: 30px;
+    left: 28px;
+    background: #FFD9BD;
+    border: 4px solid #402B48;
+    border-radius: 46% 46% 48% 48%;
+    z-index: 3;
+    box-shadow: inset 0 -7px 0 #F9BFAE;
+}
+
+.hair {
+    position: absolute;
+    width: 160px;
+    height: 100px;
+    top: 14px;
+    left: 20px;
+    background: #302348;
+    border-radius: 48% 48% 22% 22%;
+    z-index: 4;
+    clip-path: polygon(
+        0 15%, 12% 0, 24% 12%, 36% 0,
+        49% 13%, 62% 0, 74% 12%, 90% 2%,
+        100% 18%, 94% 60%, 81% 43%,
+        75% 67%, 63% 47%, 50% 69%,
+        39% 46%, 25% 66%, 16% 43%, 5% 62%
+    );
+}
+
+.eye {
+    position: absolute;
+    top: 61px;
+    width: 18px;
+    height: 27px;
+    border-radius: 50%;
+    background: #302348;
+    box-shadow: inset 0 5px 0 #49375F;
+}
+
+.eye::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 8px;
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
+    background: white;
+}
+
+.eye-left {
+    left: 30px;
+}
+
+.eye-right {
+    right: 30px;
+}
+
+.blush {
+    position: absolute;
+    width: 23px;
+    height: 11px;
+    top: 94px;
+    background: #F58DA5;
+    opacity: 0.65;
+    filter: blur(3px);
+    border-radius: 50%;
+}
+
+.blush-left {
+    left: 11px;
+}
+
+.blush-right {
+    right: 11px;
+}
+
+.smile {
+    position: absolute;
+    width: 22px;
+    height: 12px;
+    top: 103px;
+    left: 57px;
+    border-bottom: 3px solid #9D4960;
+    border-radius: 0 0 50% 50%;
+}
+
+.neck {
+    position: absolute;
+    width: 37px;
+    height: 38px;
+    top: 152px;
+    left: 82px;
+    background: #FFD0B3;
+    z-index: 1;
+}
+
+.body {
+    position: absolute;
+    width: 135px;
+    height: 85px;
+    top: 169px;
+    left: 32px;
+    background: linear-gradient(135deg, #5FC8FF, #8272F8);
+    border: 4px solid #402B48;
+    border-radius: 42px 42px 20px 20px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+}
+
+.shield {
+    width: 36px;
+    height: 41px;
+    display: grid;
+    place-items: center;
+    background: white;
+    color: #4A81F6;
+    font-size: 21px;
+    font-weight: 900;
+    clip-path: polygon(50% 0, 95% 17%, 87% 68%, 50% 100%, 13% 68%, 5% 17%);
+}
+
+.arm {
+    position: absolute;
+    width: 31px;
+    height: 66px;
+    top: 176px;
+    background: #FFD0B3;
+    border: 4px solid #402B48;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.arm-left {
+    left: 13px;
+    transform: rotate(23deg);
+}
+
+.arm-right {
+    right: 13px;
+    transform: rotate(-23deg);
+}
+
+.character-caption {
+    position: relative;
+    z-index: 3;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.character-caption span {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #B9DFFF;
+}
+
+.character-caption h3 {
+    margin-top: 7px;
+    color: white;
+    font-size: 16px;
+}
+
+
+/* FLOATING DECORATIONS */
+
+.floating-star {
+    position: absolute;
+    color: #A8DFFF;
+    font-size: 35px;
+    animation: twinkle 2.5s ease-in-out infinite;
+}
+
+.star-one {
+    top: 48px;
+    right: 16%;
+}
+
+.star-two {
+    top: 30%;
+    left: 2%;
+    color: #FFB4D2;
+    font-size: 43px;
+    animation-delay: 0.7s;
+}
+
+.star-three {
+    bottom: 58px;
+    right: 18%;
+    color: #C2AEFF;
+    animation-delay: 1.2s;
+}
+
+.floating-note {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 17px;
+    background: white;
+    color: var(--navy);
+    border-radius: 18px;
+    box-shadow: 0 15px 40px #00000022;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-note > span {
+    font-size: 27px;
+}
+
+.floating-note div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.floating-note strong {
+    font-size: 12px;
+}
+
+.floating-note small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.note-top {
+    top: 65px;
+    right: -10px;
+}
+
+.note-bottom {
+    bottom: 55px;
+    left: -5px;
+    animation-delay: 1s;
+}
+
+
+/* 5. LEARNING SECTION */
+
+.learn-section {
+    padding: 100px 7%;
+    background:
+        radial-gradient(ellipse at 0% 0%, #E8F4FF 0%, transparent 35%),
+        #FFFFFF;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.section-tag {
+    display: inline-block;
+    color: #587FF1;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    margin-top: 17px;
+    color: var(--navy);
+    font-size: clamp(30px, 4vw, 45px);
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+}
+
+.section-heading h2 span {
+    color: var(--blue);
+}
+
+.section-heading p {
+    margin-top: 17px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1180px;
+    margin: auto;
+}
+
+.topic-card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 27px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0 12px 35px #243C6410;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.topic-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -45px;
+    top: -45px;
+    border-radius: 50%;
+    background: var(--card-glow);
+    opacity: 0.8;
+}
+
+.topic-card:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 22px 45px #243C6420;
+}
+
+.password-card {
+    --card-glow: #D9EAFF;
+}
+
+.privacy-card {
+    --card-glow: #E6DDFF;
+}
+
+.scam-card {
+    --card-glow: #FFE2EC;
+}
+
+.topic-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: var(--card-glow);
+    font-size: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.topic-number {
+    display: block;
+    margin-top: 25px;
+    color: #8290AA;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.topic-card h3 {
+    margin-top: 12px;
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.topic-card p {
+    margin-top: 13px;
+    min-height: 82px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.topic-card a {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.topic-card a:hover {
+    color: var(--purple);
+}
+
+
+/* 6. CAMPAIGN MISSION */
+
+.mission-section {
+    padding: 90px 7%;
+    text-align: center;
+    background: linear-gradient(135deg, #F1F7FF, #F8F4FF, #FFF5F8);
+}
+
+.mission-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 25px;
+    display: grid;
+    place-items: center;
+    border: 1px solid white;
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0 10px 35px #5366B51A;
+    font-size: 36px;
+}
+
+.mission-section h2 {
+    max-width: 760px;
+    margin: 18px auto;
+    color: var(--navy);
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.25;
+    letter-spacing: -1px;
+}
+
+.mission-section h2 span {
+    color: var(--purple);
+}
+
+.mission-section > p {
+    max-width: 690px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.mission-pill {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 20px;
+    border: 1px solid #E4DBFF;
+    border-radius: 30px;
+    background: white;
+    color: #7254CB;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+/* 7. FOOTER */
+
+.footer {
+    padding: 45px 7%;
+    text-align: center;
+    background: var(--navy);
+    color: #C7D3EC;
+}
+
+.footer .logo {
+    color: white;
+    justify-content: center;
+}
+
+.footer .logo > span:last-child {
+    color: #80C9FF;
+}
+
+.footer > p {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.footer .creator {
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.footer small {
+    display: block;
+    margin-top: 25px;
+    color: #91A1C4;
+    font-size: 11px;
+}
+
+
+/* 8. ANIMATIONS */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.25) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slowSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 9. TABLETS AND SMALL LAPTOPS */
+
+@media (max-width: 1000px) {
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        gap: 17px;
+    }
+
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+        grid-template-columns: 1fr 0.9fr;
+    }
+
+    .note-top {
+        right: -5px;
+    }
+
+    .note-bottom {
+        left: -5px;
+    }
+
+    .topic-grid {
+        gap: 16px;
+    }
+
+    .topic-card {
+        padding: 25px 20px;
+    }
+}
+
+
+/* 10. MOBILE PHONES */
+
+@media (max-width: 720px) {
+    .navbar {
+        min-height: auto;
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .navbar .logo {
+        font-size: 23px;
+    }
+
+    .navbar nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: clamp(13px, 4vw, 25px);
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .nav-button {
+        padding: 11px 14px;
+        font-size: 12px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 65px 6% 55px;
+        gap: 15px;
+    }
+
+    .hero-content {
+        margin: auto;
+    }
+
+    .welcome-tag {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero h1 {
+        font-size: clamp(44px, 11vw, 64px);
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .trust-note {
+        justify-content: center;
+    }
+
+    .hero-art {
+        min-height: 430px;
+        margin-top: 10px;
+    }
+
+    .orbit-one {
+        width: 330px;
+        height: 330px;
+    }
+
+    .orbit-two {
+        width: 270px;
+        height: 270px;
+    }
+
+    .character-card {
+        width: 275px;
+        min-height: 330px;
+    }
+
+    .note-top {
+        right: 0;
+        top: 38px;
+    }
+
+    .note-bottom {
+        left: 0;
+        bottom: 30px;
+    }
+
+    .floating-note {
+        padding: 11px 12px;
+        gap: 8px;
+    }
+
+    .floating-note > span {
+        font-size: 22px;
+    }
+
+    .floating-note strong {
+        font-size: 10px;
+    }
+
+    .floating-note small {
+        font-size: 9px;
+    }
+
+    .learn-section {
+        padding: 70px 6%;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .section-heading p {
+        font-size: 14px;
+    }
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        margin: auto;
+        gap: 18px;
+    }
+
+    .topic-card {
+        padding: 27px;
+    }
+
+    .topic-card p {
+        min-height: auto;
+    }
+
+    .mission-section {
+        padding: 70px 6%;
+    }
+
+    .mission-section h2 {
+        font-size: 32px;
+    }
+
+    .footer {
+        padding: 40px 6%;
+    }
+}
+
+
+/* 11. VERY SMALL PHONES */
+
+@media (max-width: 380px) {
+    .navbar nav {
+        gap: 11px;
+    }
+
+    .navbar nav a {
+        font-size: 11px;
+    }
+
+    .nav-button {
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-art {
+        transform: scale(0.92);
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .floating-note strong {
+        font-size: 9px;
+    }
+}
+
+
+/* 12. ACCESSIBILITY: REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+/* =========================================
+   SECURESPHERE MASCOT SQUAD
+   Original CSS-drawn chibi characters
+   ========================================= */
+
+/* Mascot display area */
+.ss-mascot-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 28px 16px;
+}
+
+/* Individual mascot */
+.ss-mascot {
+    --mascot-color: #70C9FF;
+    --mascot-dark: #398BFF;
+    position: relative;
+    width: 116px;
+    height: 145px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    animation: ss-mascot-float 3s ease-in-out infinite;
+}
+
+.ss-mascot:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.ss-mascot:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.ss-mascot:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Character body */
+.ss-mascot-body {
+    position: relative;
+    width: 88px;
+    height: 94px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--mascot-color);
+    border: 3px solid #344064;
+    border-radius: 42% 42% 38% 38%;
+    box-shadow: inset -5px -6px 0 #0000000D,
+                0 7px 0 #34406412;
+}
+
+/* Cute eyes */
+.ss-mascot-eye {
+    position: absolute;
+    top: 35px;
+    width: 9px;
+    height: 13px;
+    background: #29304D;
+    border-radius: 50%;
+}
+
+.ss-mascot-eye::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+}
+
+.ss-mascot-eye.left {
+    left: 22px;
+}
+
+.ss-mascot-eye.right {
+    right: 22px;
+}
+
+/* Rosy cheeks */
+.ss-mascot-cheek {
+    position: absolute;
+    top: 53px;
+    width: 14px;
+    height: 7px;
+    background: #FF8EAD;
+    border-radius: 50%;
+    opacity: 0.85;
+}
+
+.ss-mascot-cheek.left {
+    left: 10px;
+}
+
+.ss-mascot-cheek.right {
+    right: 10px;
+}
+
+/* Little smile */
+.ss-mascot-smile {
+    position: absolute;
+    top: 54px;
+    left: 35px;
+    width: 13px;
+    height: 8px;
+    border-bottom: 2px solid #8E4059;
+    border-radius: 0 0 50% 50%;
+}
+
+/* Tiny arms */
+.ss-mascot-arm {
+    position: absolute;
+    top: 62px;
+    width: 17px;
+    height: 30px;
+    background: var(--mascot-color);
+    border: 3px solid #344064;
+    border-radius: 12px;
+    z-index: -1;
+}
+
+.ss-mascot-arm.left {
+    left: -11px;
+    transform: rotate(24deg);
+}
+
+.ss-mascot-arm.right {
+    right: -11px;
+    transform: rotate(-24deg);
+}
+
+/* Tiny feet */
+.ss-mascot-foot {
+    position: absolute;
+    bottom: -8px;
+    width: 24px;
+    height: 13px;
+    background: #FFD5C2;
+    border: 3px solid #344064;
+    border-radius: 50% 50% 40% 40%;
+}
+
+.ss-mascot-foot.left {
+    left: 13px;
+}
+
+.ss-mascot-foot.right {
+    right: 13px;
+}
+
+/* Names below each character */
+.ss-mascot-name {
+    margin-top: 22px;
+    color: #273451;
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+}
+
+/* Mascot colour themes */
+.ss-shiny {
+    --mascot-color: #8AD8FF;
+    --mascot-dark: #398BFF;
+}
+
+.ss-lucky {
+    --mascot-color: #FFD76D;
+    --mascot-dark: #F2A928;
+}
+
+.ss-sparkle {
+    --mascot-color: #D8B9FF;
+    --mascot-dark: #9167F8;
+}
+
+.ss-byte {
+    --mascot-color: #FFAAC8;
+    --mascot-dark: #E85C94;
+}
+
+/* Special shield emblem */
+.ss-mascot-emblem {
+    position: absolute;
+    bottom: 8px;
+    font-size: 23px;
+    filter: drop-shadow(0 2px 0 #FFFFFF90);
+}
+
+/* Floating animation */
+@keyframes ss-mascot-float {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-9px) rotate(2deg);
+    }
+}
+
+/* Small-screen adjustment */
+@media (max-width: 480px) {
+    .ss-mascot-stage {
+        gap: 12px;
+        padding: 22px 8px;
+    }
+
+    .ss-mascot {
+        transform: scale(0.92);
+        margin: -4px;
+    }
+
+    .ss-mascot-name {
+        font-size: 11px;
+    }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    .ss-mascot {
+        animation: none;
+    }
+}
+
+
+/* =========================================
+   SECURESPHERE MASCOT SIZE & ANIMATION UPGRADE
+   ========================================= */
+
+.ss-mascot {
+    width: 150px;
+    height: 180px;
+    animation: ss-mascot-float 3s ease-in-out infinite;
+}
+
+.ss-mascot-body {
+    width: 112px;
+    height: 118px;
+    margin-top: 12px;
+    border-width: 3px;
+}
+
+.ss-mascot-eye {
+    top: 43px;
+    width: 11px;
+    height: 15px;
+}
+
+.ss-mascot-eye.left {
+    left: 29px;
+}
+
+.ss-mascot-eye.right {
+    right: 29px;
+}
+
+.ss-mascot-cheek {
+    top: 65px;
+    width: 17px;
+    height: 9px;
+}
+
+.ss-mascot-cheek.left {
+    left: 13px;
+}
+
+.ss-mascot-cheek.right {
+    right: 13px;
+}
+
+.ss-mascot-smile {
+    top: 68px;
+    left: 45px;
+    width: 16px;
+    height: 9px;
+}
+
+.ss-mascot-arm {
+    top: 76px;
+    width: 21px;
+    height: 35px;
+}
+
+.ss-mascot-foot {
+    bottom: -8px;
+    width: 29px;
+    height: 16px;
+}
+
+.ss-mascot-foot.left {
+    left: 17px;
+}
+
+.ss-mascot-foot.right {
+    right: 17px;
+}
+
+.ss-mascot-name {
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.ss-mascot-emblem {
+    bottom: 12px;
+    font-size: 29px;
+}
+
+/* Keep mascots comfortable on smaller screens */
+@media (max-width: 480px) {
+    .ss-mascot-stage {
+        gap: 8px;
+        padding: 20px 6px;
+    }
+
+    .ss-mascot {
+        transform: scale(.9);
+        margin: 0;
+    }
+
+    .ss-mascot-name {
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ss-mascot {
+        animation: none;
+    }
+}
+
+
+/* =========================================
+   SECURESPHERE SHARED NAVIGATION
+   ========================================= */
+
+.ss-navbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 16px 5%;
+    background: #101B3D;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 100;
+}
+
+.ss-brand {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.ss-brand span {
+    color: #70C9FF;
+}
+
+.ss-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ss-nav-links a {
+    color: #EAF5FF;
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 12px;
+    font-size: .9rem;
+    font-weight: 700;
+    transition: background .2s, color .2s;
+}
+
+.ss-nav-links a:hover,
+.ss-nav-links a:focus-visible {
+    background: #273B78;
+    color: #FFFFFF;
+    outline-offset: 3px;
+}
+
+.ss-nav-links a.ss-nav-active {
+    background: #398BFF;
+    color: #FFFFFF;
+}
+
+@media (max-width: 760px) {
+    .ss-navbar {
+        justify-content: center;
+        padding: 15px 12px;
+    }
+
+    .ss-brand {
+        width: 100%;
+        text-align: center;
+    }
+
+    .ss-nav-links {
+        gap: 5px;
+    }
+
+    .ss-nav-links a {
+        padding: 8px 9px;
+        font-size: .82rem;
+    }
+}

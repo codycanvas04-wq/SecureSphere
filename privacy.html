@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Playground | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .privacy-page {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 20px;
+            color: #172344;
+        }
+
+        .privacy-hero {
+            padding: 40px 25px;
+            text-align: center;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ddf8f1, #e4edff, #f5e3ff);
+        }
+
+        .privacy-hero .hero-icon {
+            font-size: 4rem;
+        }
+
+        .privacy-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            margin: 12px 0;
+        }
+
+        .privacy-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .privacy-card {
+            background: white;
+            border: 1px solid #e0e8f5;
+            border-radius: 20px;
+            padding: 23px;
+            box-shadow: 0 8px 24px rgba(16, 27, 61, 0.07);
+        }
+
+        .privacy-card .emoji {
+            font-size: 2.5rem;
+        }
+
+        .privacy-card h3 {
+            margin: 12px 0;
+        }
+
+        .privacy-card p {
+            color: #526078;
+            line-height: 1.7;
+        }
+
+        .privacy-section-title {
+            margin-top: 35px;
+        }
+
+        .scenario {
+            background: #fff7e7;
+            border: 1px solid #ffe2a6;
+            padding: 22px;
+            border-radius: 18px;
+            margin: 18px 0;
+            line-height: 1.8;
+        }
+
+        .safe-box {
+            background: #e7f8ef;
+            border: 1px solid #bcebd0;
+            padding: 22px;
+            border-radius: 18px;
+            margin: 18px 0;
+            line-height: 1.8;
+        }
+
+        .privacy-checklist {
+            background: #f1edff;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .privacy-checklist label {
+            display: block;
+            margin: 16px 0;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .privacy-checklist input {
+            margin-right: 10px;
+            transform: scale(1.15);
+        }
+
+        .privacy-button {
+            display: inline-block;
+            background: #225fcb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        #privacyResult {
+            font-weight: bold;
+            margin-top: 18px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .privacy-page {
+                padding: 12px;
+            }
+
+            .privacy-hero {
+                padding: 28px 18px;
+            }
+        }
+
+/* Personal information exposure guide */
+.privacy-exposure-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.privacy-exposure-step {
+    background: #F5F8FF;
+    border: 1px solid #D8E5FF;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.exposure-icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.privacy-exposure-step h3 {
+    color: #273B78;
+    font-size: 1.05rem;
+}
+
+.privacy-exposure-step p {
+    color: #53617D;
+    line-height: 1.7;
+}
+
+.privacy-exposure-step a {
+    color: #246FD6;
+    font-weight: bold;
+}
+
+.privacy-exposure-warning {
+    background: #FFF2D8;
+    border-left: 5px solid #F2A928;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 22px;
+    line-height: 1.8;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header style="text-align:center; padding:22px 12px;">
+        <a href="index.html"
+           style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
+            🛡️ SecureSphere
+        </a>
+        <p>Your Passwords. Your Privacy. Your Protection.</p>
+        <a href="index.html">← Back to Home</a>
+    </header>
+
+    <main class="privacy-page">
+
+        <section class="privacy-hero">
+            <div class="hero-icon">🕵️‍♀️🔎</div>
+            <p><strong>WELCOME TO THE PRIVACY PLAYGROUND</strong></p>
+            <h1>Your Data, Your Rules!</h1>
+            <p>
+                Your name, phone number, photos, location and online
+                activity can reveal a lot about you. Learn how to share
+                less, check your settings and protect your digital life.
+            </p>
+        </section>
+
+        <h2 class="privacy-section-title">🌈 What Should You Protect?</h2>
+
+        <section class="privacy-grid">
+
+            <article class="privacy-card">
+                <div class="emoji">🪪</div>
+                <h3>Personal details</h3>
+                <p>
+                    Avoid publicly sharing your home address, phone number,
+                    identity documents or other private information.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <div class="emoji">📍</div>
+                <h3>Your location</h3>
+                <p>
+                    Review which apps can access your location. Allow it
+                    only when needed and choose limited access where possible.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <div class="emoji">📸</div>
+                <h3>Photos and posts</h3>
+                <p>
+                    Think before posting. Photos may reveal your school,
+                    workplace, daily routine or other identifying details.
+                </p>
+            </article>
+
+            <article class="privacy-card">
+                <div class="emoji">📲</div>
+                <h3>App permissions</h3>
+                <p>
+                    Check whether an app really needs access to your
+                    camera, microphone, contacts or photos.
+                </p>
+            </article>
+
+        </section>
+
+        <h2 class="privacy-section-title">🎭 Everyday Privacy Scenarios</h2>
+
+        <section class="scenario">
+            <h3>Scenario 1: A quiz asks for your birthday 🎂</h3>
+            <p>
+                A social media quiz asks for your full name, birthday,
+                school and your first pet's name to show you a fun result.
+            </p>
+            <p><strong>Think:</strong> Does this quiz genuinely need all that information?</p>
+            <p>
+                <strong>Safer choice:</strong> Skip unnecessary questions.
+                Some answers can also reveal details used in account
+                recovery or security questions.
+            </p>
+        </section>
+
+        <section class="scenario">
+            <h3>Scenario 2: An app wants every permission 📱</h3>
+            <p>
+                A simple wallpaper app requests access to your contacts,
+                microphone and precise location.
+            </p>
+            <p><strong>Think:</strong> Are these permissions necessary for its main purpose?</p>
+            <p>
+                <strong>Safer choice:</strong> Deny permissions that aren't
+                needed. Review the app's privacy information and settings.
+            </p>
+        </section>
+
+        <section class="scenario">
+            <h3>Scenario 3: A stranger asks for an OTP 🔔</h3>
+            <p>
+                Someone claiming to be a support agent asks you to share
+                a one-time password sent to your phone.
+            </p>
+            <p><strong>Think:</strong> Should you share the code to prove your identity?</p>
+            <p>
+                <strong>Safer choice:</strong> Never share your OTP or
+                sign-in verification code. Contact the service using
+                its official app or website if you are unsure.
+            </p>
+        </section>
+
+        <h2 class="privacy-section-title">✅ Your Personal Privacy Checkup</h2>
+
+        <p>
+            Tick the habits you already follow. Your selections are used
+            only to show your result on this page.
+        </p>
+
+        <section class="privacy-checklist">
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I review my social media privacy settings.
+            </label>
+
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I check app permissions from time to time.
+            </label>
+
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I avoid posting sensitive personal information publicly.
+            </label>
+
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I think before clicking unknown links or sharing information.
+            </label>
+
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I use screen locks and secure my important accounts.
+            </label>
+
+            <label>
+                <input type="checkbox" class="privacy-item">
+                I review account access and remove apps I no longer use.
+            </label>
+
+            <button type="button" class="privacy-button" id="checkPrivacy">
+                Check My Privacy Habits
+            </button>
+
+            <p id="privacyResult" aria-live="polite">
+                Your result will appear here.
+            </p>
+        </section>
+
+        <section class="safe-box">
+            <h2>💜 Remember the privacy rule</h2>
+            <p>
+                Before sharing anything online, ask yourself:
+                <strong>Who can see this? Do they need it? Could it
+                put me or someone else at risk?</strong>
+            </p>
+        </section>
+
+        <section class="privacy-hero" style="margin-top:30px;">
+            <div class="hero-icon">🛡️</div>
+            <h2>Protect your accounts, too!</h2>
+            <p>
+                Privacy and password security work together.
+                Make your accounts harder to access without permission.
+            </p>
+            <a href="checker.html" class="privacy-button">
+                Visit Password Strength Checker →
+            </a>
+            <br>
+            <a href="passwords.html" class="privacy-button"
+               style="background:#7048c6;">
+                Revisit Password Academy
+            </a>
+        </section>
+
+<!-- What to do if personal information is exposed -->
+<section class="game-card" id="exposed-information">
+    <h2>🚨 What If Your Personal Information Is Exposed?</h2>
+
+    <p class="game-intro">
+        A data leak, stolen phone, hacked account, or accidental share
+        can put your personal information at risk. Don't panic!
+        Take these steps to reduce the damage.
+    </p>
+
+    <div class="privacy-exposure-steps">
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">🔐</div>
+            <h3>1. Change Exposed Passwords</h3>
+            <p>
+                Change the affected password immediately. If you reused
+                it on other accounts, change those passwords too.
+                Use a different, strong password for every account.
+            </p>
+        </article>
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">🛡️</div>
+            <h3>2. Secure Your Accounts</h3>
+            <p>
+                Turn on two-factor authentication, sign out unfamiliar
+                sessions, and check your recovery email address and
+                phone number for unexpected changes.
+            </p>
+        </article>
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">👀</div>
+            <h3>3. Check for Suspicious Activity</h3>
+            <p>
+                Review recent logins, messages, transactions, and account
+                changes. Contact your bank immediately if financial
+                details may have been exposed.
+            </p>
+        </article>
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">📣</div>
+            <h3>4. Report the Incident</h3>
+            <p>
+                Report the problem to the affected platform using its
+                official website or app. In India, you can report
+                cybercrime through the official National Cyber Crime
+                Reporting Portal.
+            </p>
+            <a href="https://cybercrime.gov.in/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Visit the Cyber Crime Reporting Portal ↗
+            </a>
+        </article>
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">📱</div>
+            <h3>5. Protect Your Phone and SIM</h3>
+            <p>
+                If your phone is lost, use its official device-finding
+                service to lock it or erase it when appropriate.
+                Contact your mobile operator if your SIM may have
+                been stolen or misused.
+            </p>
+        </article>
+
+        <article class="privacy-exposure-step">
+            <div class="exposure-icon">🧾</div>
+            <h3>6. Keep Evidence</h3>
+            <p>
+                Save relevant screenshots, suspicious messages, emails,
+                transaction details, and complaint reference numbers.
+                Never share your password or OTP while reporting.
+            </p>
+        </article>
+
+    </div>
+
+    <div class="privacy-exposure-warning">
+        <strong>⚠️ Remember:</strong>
+        If you lose money through cyber fraud in India, call
+        <strong>1930</strong> promptly and report it through the
+        official cybercrime portal. Never pay someone who promises
+        to recover your money for a fee.
+    </div>
+</section>
+
+    </main>
+
+    <footer style="text-align:center; padding:24px 12px;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p>SecureSphere — Learn. Practise. Protect.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        const privacyButton = document.getElementById("checkPrivacy");
+        const privacyItems = document.querySelectorAll(".privacy-item");
+        const privacyResult = document.getElementById("privacyResult");
+
+        privacyButton.addEventListener("click", function () {
+            let checkedCount = 0;
+
+            privacyItems.forEach(function (item) {
+                if (item.checked) {
+                    checkedCount++;
+                }
+            });
+
+            if (checkedCount === 6) {
+                privacyResult.textContent =
+                    "🌟 Excellent! You checked all 6 habits. Keep reviewing them regularly.";
+            } else if (checkedCount >= 4) {
+                privacyResult.textContent =
+                    "💜 Great progress! You checked " + checkedCount +
+                    " out of 6 habits. Review the remaining habits to improve.";
+            } else {
+                privacyResult.textContent =
+                    "🌱 A good start! You checked " + checkedCount +
+                    " out of 6 habits. Explore the tips above and try again.";
+            }
+        });
+    </script>
+
+
+<!-- Sparkle: SecureSphere privacy mascot -->
+<div class="ss-mascot-stage">
+    <div class="ss-mascot ss-sparkle" role="img" aria-label="Sparkle, your privacy safety buddy">
+        <div class="ss-mascot-body">
+            <span class="ss-mascot-eye left"></span>
+            <span class="ss-mascot-eye right"></span>
+            <span class="ss-mascot-cheek left"></span>
+            <span class="ss-mascot-cheek right"></span>
+            <span class="ss-mascot-smile"></span>
+            <span class="ss-mascot-emblem">⭐</span>
+            <span class="ss-mascot-arm left"></span>
+            <span class="ss-mascot-arm right"></span>
+            <span class="ss-mascot-foot left"></span>
+            <span class="ss-mascot-foot right"></span>
+        </div>
+        <div class="ss-mascot-name">Sparkle</div>
+    </div>
+</div>
+
+</body>
+</html>

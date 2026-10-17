@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Detector | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .threat-page {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 20px;
+            color: #172344;
+        }
+
+        .threat-hero {
+            padding: 40px 25px;
+            text-align: center;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ffe5e9, #fff0d9, #eee5ff);
+        }
+
+        .threat-hero .hero-icon {
+            font-size: 4rem;
+        }
+
+        .threat-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            margin: 12px 0;
+        }
+
+        .threat-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .threat-card, .message-card {
+            padding: 23px;
+            background: white;
+            border: 1px solid #e0e8f5;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 24px rgba(16, 27, 61, 0.07);
+        }
+
+        .threat-card .emoji {
+            font-size: 2.5rem;
+        }
+
+        .threat-card h3 {
+            margin: 12px 0;
+        }
+
+        .threat-card p, .message-card p {
+            color: #526078;
+            line-height: 1.7;
+        }
+
+        .threat-section-title {
+            margin-top: 35px;
+        }
+
+        .fake-message {
+            background: #fff2f0;
+            border: 1px dashed #ed9a91;
+            border-radius: 14px;
+            padding: 18px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .challenge-button {
+            display: inline-block;
+            padding: 12px 17px;
+            margin: 8px 6px 0 0;
+            border: none;
+            border-radius: 11px;
+            background: #225fcb;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .challenge-button:hover {
+            opacity: 0.88;
+        }
+
+        .purple {
+            background: #7048c6;
+        }
+
+        .orange {
+            background: #b85b16;
+        }
+
+        .challenge-result {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 12px;
+            background: #f1edff;
+            line-height: 1.8;
+        }
+
+        .safety-box {
+            margin: 25px 0;
+            padding: 23px;
+            border-radius: 18px;
+            background: #e5f8ee;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .threat-page {
+                padding: 12px;
+            }
+
+            .threat-hero {
+                padding: 28px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header style="text-align:center; padding:22px 12px;">
+        <a href="index.html"
+           style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
+            🛡️ SecureSphere
+        </a>
+        <p>Your Passwords. Your Privacy. Your Protection.</p>
+        <a href="index.html">← Back to Home</a>
+    </header>
+
+    <main class="threat-page">
+
+        <section class="threat-hero">
+            <div class="hero-icon">🚨🕵️</div>
+            <p><strong>WELCOME TO THE THREAT DETECTOR</strong></p>
+            <h1>Think Before You Click!</h1>
+            <p>
+                Not every message, link or online offer is trustworthy.
+                Learn to spot warning signs and protect your personal
+                information from common online scams.
+            </p>
+        </section>
+
+        <h2 class="threat-section-title">👾 Meet the Digital Trouble-Makers</h2>
+
+        <section class="threat-grid">
+
+            <article class="threat-card">
+                <div class="emoji">🎣</div>
+                <h3>Phishing Messages</h3>
+                <p>Fake emails or texts try to trick you into sharing passwords, bank details or verification codes.</p>
+            </article>
+
+            <article class="threat-card">
+                <div class="emoji">🎁</div>
+                <h3>Fake Prizes</h3>
+                <p>A message claims you won a prize, then asks for money or sensitive information.</p>
+            </article>
+
+            <article class="threat-card">
+                <div class="emoji">🎭</div>
+                <h3>Impersonation</h3>
+                <p>A scammer pretends to be a friend, bank employee, delivery agent or support representative.</p>
+            </article>
+
+            <article class="threat-card">
+                <div class="emoji">⏰</div>
+                <h3>Urgency Tricks</h3>
+                <p>Threatening messages demand immediate action so you panic instead of checking the facts.</p>
+            </article>
+
+        </section>
+
+        <h2 class="threat-section-title">🚩 Warning Signs to Look For</h2>
+
+        <section class="message-card">
+            <h3>🔍 Check the message carefully</h3>
+            <ul style="line-height:2;">
+                <li>Unexpected requests for passwords, OTPs or payment.</li>
+                <li>Threats that your account will close immediately.</li>
+                <li>Prize claims that seem too good to be true.</li>
+                <li>Unfamiliar or misspelled website addresses.</li>
+                <li>Unexpected attachments or links.</li>
+                <li>Requests to install unknown apps.</li>
+            </ul>
+            <p><strong>Remember:</strong> A message can look professional and still be fraudulent.</p>
+        </section>
+
+        <h2 class="threat-section-title">🎮 Challenge 1: Spot the Red Flags!</h2>
+
+        <p>Read this fictional message and choose the safest response.</p>
+
+        <section class="message-card">
+            <div class="fake-message">
+                <strong>⚠️ FICTIONAL SAMPLE MESSAGE</strong>
+                <p>
+                    "URGENT! Your account will be blocked in 10 minutes!
+                    Confirm your password and OTP immediately to keep
+                    your account active."
+                </p>
+                <p>Website shown: <code>http://example.invalid/verify</code></p>
+                <p><em>This is a made-up training example. Do not visit unknown links.</em></p>
+            </div>
+
+            <h3>What should you do?</h3>
+
+            <button type="button" class="challenge-button"
+                    data-threat-answer="wrong">
+                A. Click quickly before time runs out
+            </button>
+
+            <button type="button" class="challenge-button purple"
+                    data-threat-answer="right">
+                B. Ignore the link and check through the official app
+            </button>
+
+            <button type="button" class="challenge-button orange"
+                    data-threat-answer="wrong">
+                C. Reply with the requested OTP
+            </button>
+
+            <div id="challengeOneResult" class="challenge-result" aria-live="polite">
+                Choose an answer to see the explanation.
+            </div>
+        </section>
+
+        <h2 class="threat-section-title">🎮 Challenge 2: Is This Offer Trustworthy?</h2>
+
+        <section class="message-card">
+            <div class="fake-message" style="background:#fff7e7; border-color:#e9c46a;">
+                <strong>🎁 FICTIONAL OFFER</strong>
+                <p>
+                    "Congratulations! You have won a free smartphone.
+                    Pay a processing fee now and send your banking details
+                    to claim it!"
+                </p>
+            </div>
+
+            <h3>Which choice is safest?</h3>
+
+            <button type="button" class="challenge-button purple" id="offerSafe">
+                Treat it as suspicious and verify independently
+            </button>
+
+            <button type="button" class="challenge-button orange" id="offerUnsafe">
+                Pay immediately to claim the prize
+            </button>
+
+            <div id="challengeTwoResult" class="challenge-result" aria-live="polite">
+                Choose an answer to reveal why.
+            </div>
+        </section>
+
+        <section class="safety-box">
+            <h2>🛡️ Your 4-Step Safety Shield</h2>
+            <ol style="line-height:2;">
+                <li><strong>Pause:</strong> Don't act under pressure.</li>
+                <li><strong>Inspect:</strong> Check the sender and website address.</li>
+                <li><strong>Verify:</strong> Use the organisation's official app or website.</li>
+                <li><strong>Protect:</strong> Never share passwords, OTPs or recovery codes.</li>
+            </ol>
+        </section>
+
+        <section class="message-card">
+            <h2>🆘 What if you already clicked?</h2>
+            <p>
+                Don't panic. Close the suspicious page. If you shared a
+                password, change it through the official service and
+                anywhere else you reused it. Enable two-factor authentication
+                where available.
+            </p>
+            <p>
+                If you suspect financial fraud in India, contact your bank
+                promptly and report it through the official helpline
+                <strong>1930</strong> or the
+                <a href="https://cybercrime.gov.in/" target="_blank"
+                   rel="noopener noreferrer">National Cyber Crime Reporting Portal</a>.
+            </p>
+        </section>
+
+        <section class="threat-hero" style="margin-top:30px;">
+            <div class="hero-icon">🌟</div>
+            <h2>You're becoming a Cyber Star!</h2>
+            <p>Keep learning, stay curious, and verify suspicious messages before trusting them.</p>
+            <a href="passwords.html" class="challenge-button">Password Academy</a>
+            <a href="privacy.html" class="challenge-button purple">Privacy Playground</a>
+        </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:24px 12px;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p>SecureSphere — Learn. Practise. Protect.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        const challengeOneResult = document.getElementById("challengeOneResult");
+
+        document.querySelectorAll("[data-threat-answer]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (button.dataset.threatAnswer === "right") {
+                    challengeOneResult.textContent =
+                        "✅ Correct! Urgency, a password request and an OTP request are major warning signs. Open the official app or type the known website address yourself.";
+                } else {
+                    challengeOneResult.textContent =
+                        "❌ Not the safest choice. Don't rush or share an OTP. Verify the message through the organisation's official app or website.";
+                }
+            });
+        });
+
+        document.getElementById("offerSafe").addEventListener("click", function () {
+            document.getElementById("challengeTwoResult").textContent =
+                "✅ Correct! Unexpected prizes that demand fees or banking details are suspicious. Verify independently.";
+        });
+
+        document.getElementById("offerUnsafe").addEventListener("click", function () {
+            document.getElementById("challengeTwoResult").textContent =
+                "❌ Be careful! Paying an unexpected fee or sharing banking details can expose you to fraud. Verify the offer independently instead.";
+        });
+    </script>
+
+<!-- Detective Byte: SecureSphere scam-spotting mascot -->
+<div class="ss-mascot-stage">
+    <div class="ss-mascot ss-byte" role="img" aria-label="Detective Byte, your scam-spotting buddy">
+        <div class="ss-mascot-body">
+            <span class="ss-mascot-eye left"></span>
+            <span class="ss-mascot-eye right"></span>
+            <span class="ss-mascot-cheek left"></span>
+            <span class="ss-mascot-cheek right"></span>
+            <span class="ss-mascot-smile"></span>
+            <span class="ss-mascot-emblem">🔎</span>
+            <span class="ss-mascot-arm left"></span>
+            <span class="ss-mascot-arm right"></span>
+            <span class="ss-mascot-foot left"></span>
+            <span class="ss-mascot-foot right"></span>
+        </div>
+        <div class="ss-mascot-name">Detective Byte</div>
+    </div>
+</div>
+
+</body>
+</html>

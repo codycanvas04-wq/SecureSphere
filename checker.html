@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .checker-section {
+            max-width: 760px;
+            margin: 50px auto;
+            padding: 25px;
+        }
+
+        .checker-card {
+            background: white;
+            color: #172344;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(16, 27, 61, 0.12);
+        }
+
+        .checker-card h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .checker-card .intro {
+            color: #58647b;
+            line-height: 1.7;
+        }
+
+        .password-input-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .password-input-row input {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border: 2px solid #d8e3f2;
+            border-radius: 12px;
+            font-size: 16px;
+        }
+
+        .password-input-row button,
+        .example-button {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .password-input-row button {
+            background: #eaf2ff;
+            color: #174d9b;
+        }
+
+        .strength-track {
+            height: 12px;
+            background: #e7ebf2;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 22px 0 10px;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0;
+            background: #aab3c3;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .strength-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .strength-message {
+            color: #58647b;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .checks {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0;
+        }
+
+        .checks li {
+            padding: 10px 12px;
+            margin: 8px 0;
+            background: #f4f7fc;
+            border-radius: 10px;
+        }
+
+        .checks .pass {
+            color: #137547;
+        }
+
+        .checks .fail {
+            color: #9a4b30;
+        }
+
+        .checker-tip {
+            padding: 16px;
+            background: #eaf5ff;
+            border-radius: 14px;
+            line-height: 1.7;
+            margin-top: 18px;
+        }
+
+        .example-button {
+            margin-top: 12px;
+            background: #eee7ff;
+            color: #5735a0;
+        }
+
+        .privacy-note {
+            font-size: 0.9rem;
+            color: #58647b;
+            margin-top: 18px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 520px) {
+            .checker-section {
+                margin: 24px auto;
+                padding: 12px;
+            }
+
+            .checker-card {
+                padding: 20px;
+            }
+
+            .password-input-row {
+                flex-wrap: wrap;
+            }
+
+            .password-input-row input {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="text-align:center; padding:22px 12px;">
+        <a href="index.html"
+           style="font-weight:bold; font-size:1.3rem; text-decoration:none;">
+            🛡️ SecureSphere
+        </a>
+        <p>Your Passwords. Your Privacy. Your Protection.</p>
+        <a href="index.html">← Back to Home</a>
+    </header>
+
+    <main class="checker-section">
+        <section class="checker-card">
+            <p>🔐 YOUR PERSONAL SAFETY LAB</p>
+            <h1>Test Your Password Strength!</h1>
+            <p class="intro">
+                Let's learn what makes a password harder to guess.
+                Try a fictional password and get instant feedback.
+            </p>
+
+            <form id="checkerForm" autocomplete="off">
+                <label for="passwordInput"><strong>Enter a test password</strong></label>
+
+                <div class="password-input-row">
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        placeholder="Try a fictional password..."
+                        autocomplete="new-password"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        maxlength="128"
+                    >
+                    <button type="button" id="togglePassword"
+                            aria-pressed="false">
+                        Show
+                    </button>
+                </div>
+            </form>
+
+            <div class="strength-track"
+                 role="progressbar"
+                 aria-label="Estimated password strength"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-valuenow="0"
+                 id="strengthProgress">
+                <div class="strength-fill" id="strengthFill"></div>
+            </div>
+
+            <p class="strength-label" id="strengthLabel" aria-live="polite">
+                Waiting for your test password
+            </p>
+            <p class="strength-message" id="strengthMessage">
+                Your results will appear here as you type.
+            </p>
+
+            <h3>🧩 Password checklist</h3>
+            <ul class="checks">
+                <li id="lengthCheck" class="fail">○ At least 12 characters</li>
+                <li id="longCheck" class="fail">○ 16 or more characters</li>
+                <li id="varietyCheck" class="fail">○ Uses more than one character type</li>
+                <li id="patternCheck" class="fail">○ Avoids common or predictable patterns</li>
+                <li id="uniqueCheck" class="fail">○ Avoids repeated characters and sequences</li>
+            </ul>
+
+            <div class="checker-tip" id="improvementTip">
+                💡 Tip: A long, unique passphrase made from unrelated words
+                can be easier to remember and harder to guess.
+            </div>
+
+            <button type="button" class="example-button" id="tryExample">
+                ✨ Try an example
+            </button>
+
+            <p class="privacy-note">
+                🔒 Privacy promise: this checker evaluates your input in
+                this browser and does not send it to a server or save it.
+                This is an educational estimate, not a guarantee against
+                cracking. Never enter a real account password into an
+                unfamiliar checker.
+            </p>
+        </section>
+    </main>
+
+    <footer style="text-align:center; padding:24px 12px;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p><a href="index.html">SecureSphere Home</a></p>
+    </footer>
+
+    <script src="js/checker.js"></script>
+</body>
+</html>

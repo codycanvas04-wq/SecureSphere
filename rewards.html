@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements & Rewards | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .rewards-hero {
+            background: linear-gradient(135deg, #101B3D, #493B91, #7557C8);
+            color: white;
+            text-align: center;
+            padding: 55px 20px 45px;
+            border-radius: 0 0 32px 32px;
+        }
+
+        .rewards-hero .eyebrow {
+            color: #FFE18A;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .rewards-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin: 14px 0;
+        }
+
+        .rewards-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #F0ECFF;
+        }
+
+        .rewards-container {
+            max-width: 1100px;
+            padding: 0 18px;
+            margin: 35px auto;
+        }
+
+        .rewards-intro {
+            text-align: center;
+            line-height: 1.8;
+            color: #53617D;
+            max-width: 750px;
+            margin: 0 auto 30px;
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+            gap: 20px;
+        }
+
+        .reward-card {
+            background: white;
+            border: 2px solid #E5E9FF;
+            border-radius: 24px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px #101B3D0D;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px #101B3D18;
+        }
+
+        .reward-icon {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 43px;
+            background: #FFF2C8;
+            border: 4px solid #FFE18A;
+        }
+
+        .reward-card:nth-child(2) .reward-icon {
+            background: #DFF3FF;
+            border-color: #9BD9FF;
+        }
+
+        .reward-card:nth-child(3) .reward-icon {
+            background: #F0E5FF;
+            border-color: #D3B5FF;
+        }
+
+        .reward-card:nth-child(4) .reward-icon {
+            background: #FFE5EE;
+            border-color: #FFB8D0;
+        }
+
+        .reward-card:nth-child(5) .reward-icon {
+            background: #DDF9E8;
+            border-color: #A3E8BD;
+        }
+
+        .reward-card:nth-child(6) .reward-icon {
+            background: #FFE8D8;
+            border-color: #FFC39B;
+        }
+
+        .reward-card h2 {
+            color: #273B78;
+            font-size: 1.2rem;
+            margin: 0 0 10px;
+        }
+
+        .reward-card p {
+            color: #53617D;
+            line-height: 1.7;
+            font-size: .95rem;
+        }
+
+        .reward-tag {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: #F0ECFF;
+            color: #6245A5;
+            font-weight: bold;
+            font-size: .8rem;
+            margin-top: 8px;
+        }
+
+        .journey-card {
+            margin-top: 35px;
+            padding: 28px;
+            border-radius: 24px;
+            background: #EAF5FF;
+            text-align: center;
+        }
+
+        .journey-card h2 {
+            color: #273B78;
+        }
+
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .journey-step {
+            padding: 18px 12px;
+            background: white;
+            border-radius: 16px;
+            line-height: 1.6;
+        }
+
+        .journey-step span {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .honesty-note {
+            border-left: 5px solid #398BFF;
+            background: #F5F8FF;
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            color: #354363;
+            line-height: 1.8;
+        }
+
+        .rewards-link {
+            display: inline-block;
+            margin: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: #398BFF;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .rewards-link:hover {
+            background: #246FD6;
+        }
+
+        @media (max-width: 600px) {
+            .rewards-hero {
+                padding: 40px 18px;
+            }
+
+            .reward-card {
+                padding: 22px 16px;
+            }
+
+            .journey-card {
+                padding: 22px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="rewards-hero">
+        <div class="eyebrow">✨ YOUR CYBER ADVENTURE ✨</div>
+        <h1>🏆 Achievements & Rewards</h1>
+        <p>
+            Every safe choice makes you stronger!
+            Explore your Cyber Star badges, discover new skills,
+            and celebrate your journey towards a safer digital life.
+        </p>
+    </header>
+
+    <main class="rewards-container">
+
+        <section class="rewards-intro">
+            <h2>Meet Your Achievement Badges! 🌟</h2>
+            <p>
+                Each badge represents an important online safety skill.
+                Learn what it takes to earn each one, then practise the skill
+                on your SecureSphere adventure.
+            </p>
+        </section>
+
+        <section class="rewards-grid" aria-label="Cyber safety achievement badges">
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Star trophy">🌟</div>
+                <h2>Cyber Star</h2>
+                <p>Begin your digital safety journey and explore your first learning activity.</p>
+                <span class="reward-tag">Beginner</span>
+            </article>
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Padlock">🔐</div>
+                <h2>Password Protector</h2>
+                <p>Learn to create long, unique passwords and understand why password reuse is risky.</p>
+                <span class="reward-tag">Password Safety</span>
+            </article>
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Magnifying glass">🕵️</div>
+                <h2>Threat Detective</h2>
+                <p>Recognise suspicious links, urgent threats, unexpected prizes, and requests for OTPs.</p>
+                <span class="reward-tag">Scam Awareness</span>
+            </article>
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Shield">🛡️</div>
+                <h2>Privacy Guardian</h2>
+                <p>Understand app permissions, privacy settings, and the importance of limiting personal information.</p>
+                <span class="reward-tag">Privacy</span>
+            </article>
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Green check mark">✅</div>
+                <h2>Two-Step Champion</h2>
+                <p>Discover how two-factor authentication adds an extra layer of account protection.</p>
+                <span class="reward-tag">Account Security</span>
+            </article>
+
+            <article class="reward-card">
+                <div class="reward-icon" role="img" aria-label="Heart and sparkle">💖</div>
+                <h2>Digital Good Citizen</h2>
+                <p>Think before sharing, respect other people's privacy, and make thoughtful online choices.</p>
+                <span class="reward-tag">Responsible Use</span>
+            </article>
+
+        </section>
+
+        <section class="journey-card">
+            <h2>🚀 Your Cyber Safety Journey</h2>
+            <p>Follow these steps to build safer digital habits.</p>
+
+            <div class="journey-steps">
+                <div class="journey-step">
+                    <span>📚</span>
+                    <strong>1. Learn</strong><br>
+                    Explore Password Academy.
+                </div>
+
+                <div class="journey-step">
+                    <span>🧩</span>
+                    <strong>2. Practise</strong><br>
+                    Try the Cyber Safety Quiz.
+                </div>
+
+                <div class="journey-step">
+                    <span>🎮</span>
+                    <strong>3. Play</strong><br>
+                    Test your skills in Mini-Games.
+                </div>
+
+                <div class="journey-step">
+                    <span>🛡️</span>
+                    <strong>4. Protect</strong><br>
+                    Apply what you learn every day.
+                </div>
+            </div>
+
+            <p style="margin-top:24px;">
+                <a class="rewards-link" href="passwords.html">📚 Password Academy</a>
+                <a class="rewards-link" href="quiz.html">🧩 Take the Quiz</a>
+                <a class="rewards-link" href="games.html">🎮 Play Mini-Games</a>
+                <a class="rewards-link" href="privacy.html">🛡️ Explore Privacy</a>
+            </p>
+        </section>
+
+        <section class="honesty-note">
+            <strong>💡 A quick note about badges:</strong>
+            These badges are currently a learning and motivation board.
+            They do not automatically unlock or save your quiz results.
+            The goal is to help you understand the skills you can practise
+            to become safer online.
+        </section>
+
+    </main>
+
+    <!-- SecureSphere mascot -->
+    <div class="ss-mascot-stage">
+        <div class="ss-mascot ss-lucky" role="img"
+             aria-label="Lucky the Lock cheering for your cyber safety journey">
+            <div class="ss-mascot-body">
+                <span class="ss-mascot-eye left"></span>
+                <span class="ss-mascot-eye right"></span>
+                <span class="ss-mascot-cheek left"></span>
+                <span class="ss-mascot-cheek right"></span>
+                <span class="ss-mascot-smile"></span>
+                <span class="ss-mascot-emblem">🏆</span>
+                <span class="ss-mascot-arm left"></span>
+                <span class="ss-mascot-arm right"></span>
+                <span class="ss-mascot-foot left"></span>
+                <span class="ss-mascot-foot right"></span>
+            </div>
+            <div class="ss-mascot-name">Lucky cheers you on!</div>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:25px 15px; color:#53617D;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p><a href="index.html">← Back to SecureSphere Home</a></p>
+    </footer>
+
+</body>
+</html>

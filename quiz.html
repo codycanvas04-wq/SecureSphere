@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Safety Quiz | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .quiz-page {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+            color: #172344;
+        }
+
+        .quiz-hero {
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #e2efff, #f0e5ff, #ffe5f2);
+        }
+
+        .quiz-hero .emoji {
+            font-size: 4rem;
+        }
+
+        .quiz-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 12px 0;
+        }
+
+        .quiz-hero p {
+            line-height: 1.8;
+        }
+
+        .quiz-card {
+            margin-top: 25px;
+            padding: 25px;
+            border: 1px solid #e0e8f5;
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(16, 27, 61, 0.08);
+        }
+
+        .quiz-progress {
+            height: 12px;
+            background: #e8edf7;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 14px 0 22px;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #398bff, #8755df);
+            transition: width 0.3s ease;
+        }
+
+        #questionNumber {
+            color: #7048c6;
+            font-weight: bold;
+        }
+
+        #questionText {
+            font-size: 1.35rem;
+            line-height: 1.6;
+        }
+
+        .answer-list {
+            display: grid;
+            gap: 12px;
+            margin: 22px 0;
+        }
+
+        .answer-button {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8f4;
+            border-radius: 13px;
+            background: #f8faff;
+            color: #172344;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .answer-button:hover:not(:disabled) {
+            border-color: #398bff;
+            background: #edf5ff;
+        }
+
+        .answer-button:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer-button.correct {
+            background: #e4f8ec;
+            border-color: #36a76b;
+        }
+
+        .answer-button.incorrect {
+            background: #fff0ed;
+            border-color: #e77768;
+        }
+
+        .quiz-feedback {
+            display: none;
+            padding: 16px;
+            margin: 18px 0;
+            border-radius: 13px;
+            line-height: 1.8;
+            background: #f0edff;
+        }
+
+        .quiz-main-button {
+            display: inline-block;
+            border: none;
+            border-radius: 12px;
+            padding: 13px 21px;
+            margin: 8px 8px 0 0;
+            background: #225fcb;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quiz-main-button:hover {
+            opacity: 0.88;
+        }
+
+        .quiz-main-button.purple {
+            background: #7048c6;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px 5px;
+        }
+
+        .quiz-result .trophy {
+            font-size: 5rem;
+        }
+
+        .quiz-result h2 {
+            font-size: 2rem;
+        }
+
+        .quiz-result .final-score {
+            font-size: 2.5rem;
+            color: #7048c6;
+            font-weight: bold;
+        }
+
+        .quiz-tip {
+            background: #e5f8ee;
+            padding: 20px;
+            margin-top: 24px;
+            border-radius: 17px;
+            line-height: 1.8;
+        }
+
+        .quiz-links {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-page {
+                padding: 12px;
+            }
+
+            .quiz-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header style="text-align:center; padding:22px 12px;">
+        <a href="index.html"
+           style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
+            🛡️ SecureSphere
+        </a>
+        <p>Your Passwords. Your Privacy. Your Protection.</p>
+        <a href="index.html">← Back to Home</a>
+    </header>
+
+    <main class="quiz-page">
+
+        <section class="quiz-hero">
+            <div class="emoji">🧠🏆</div>
+            <p><strong>THE CYBER STAR CHALLENGE</strong></p>
+            <h1>How Safe Are Your Online Habits?</h1>
+            <p>
+                Answer 10 questions about passwords, privacy and online
+                scams. Learn from every answer and discover your Cyber
+                Safety score!
+            </p>
+        </section>
+
+        <section class="quiz-card" id="quizCard">
+
+            <div id="quizContent">
+                <p id="questionNumber">QUESTION 1 OF 10</p>
+
+                <div class="quiz-progress">
+                    <div class="quiz-progress-fill" id="progressFill"></div>
+                </div>
+
+                <h2 id="questionText">Loading your question...</h2>
+
+                <div class="answer-list" id="answerList"></div>
+
+                <div class="quiz-feedback" id="quizFeedback"
+                     aria-live="polite"></div>
+
+                <button type="button" class="quiz-main-button"
+                        id="nextButton" hidden>
+                    Next Question →
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" hidden>
+                <div class="trophy" id="trophyEmoji">🏆</div>
+                <h2>Quiz Completed!</h2>
+                <p>Your Cyber Safety score is:</p>
+                <p class="final-score" id="finalScore">0 / 10</p>
+                <h3 id="resultMessage"></h3>
+                <p id="resultDescription"></p>
+
+                <button type="button" class="quiz-main-button"
+                        id="restartButton">
+                    🔄 Play Again
+                </button>
+            </div>
+
+        </section>
+
+        <section class="quiz-tip">
+            <h2>💡 Remember, Cyber Star!</h2>
+            <p>
+                A quiz score is just a learning guide. Real online safety
+                comes from practising good habits, checking suspicious
+                messages and protecting your personal information.
+            </p>
+        </section>
+
+        <div class="quiz-links">
+            <h2>📚 Want to learn more?</h2>
+            <a href="passwords.html" class="quiz-main-button">
+                Password Academy
+            </a>
+            <a href="privacy.html" class="quiz-main-button purple">
+                Privacy Playground
+            </a>
+            <a href="threats.html" class="quiz-main-button">
+                Threat Detector
+            </a>
+        </div>
+
+    </main>
+
+    <footer style="text-align:center; padding:24px 12px;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p>SecureSphere — Learn. Practise. Protect.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        const questions = [
+            {
+                question: "Which password habit is safest?",
+                answers: [
+                    "Use the same password everywhere",
+                    "Use a long, unique password for each account",
+                    "Use your birthday",
+                    "Use the word password"
+                ],
+                correct: 1,
+                explanation: "Long, unique and unpredictable passwords help protect each account. A password manager can help you manage them."
+            },
+            {
+                question: "What should you do if someone unexpectedly asks for your OTP?",
+                answers: [
+                    "Share it if they sound professional",
+                    "Post it in a private group",
+                    "Never share it and verify the request independently",
+                    "Send it if they say it is urgent"
+                ],
+                correct: 2,
+                explanation: "Never share OTPs or sign-in verification codes. Urgency and official-sounding language do not prove a request is genuine."
+            },
+            {
+                question: "What is two-factor authentication (2FA)?",
+                answers: [
+                    "Using two different usernames",
+                    "Adding another verification step when signing in",
+                    "Changing your password twice a day",
+                    "Sharing a password with two people"
+                ],
+                correct: 1,
+                explanation: "2FA adds another verification step beyond your password, helping protect your account."
+            },
+            {
+                question: "A message says your account will close in five minutes unless you click a link. What should you do?",
+                answers: [
+                    "Click immediately",
+                    "Reply with your password",
+                    "Forward it to everyone",
+                    "Check through the official app or website"
+                ],
+                correct: 3,
+                explanation: "Urgent threats can be used in phishing. Verify the claim through an official channel you access independently."
+            },
+            {
+                question: "A simple flashlight app requests your contacts and microphone. What is the best response?",
+                answers: [
+                    "Grant every permission",
+                    "Review whether those permissions are necessary and deny unnecessary access",
+                    "Share your contacts first",
+                    "Ignore all permission settings"
+                ],
+                correct: 1,
+                explanation: "Apps should only receive permissions they reasonably need. Review and limit access in your device settings."
+            },
+            {
+                question: "Which is the safest way to store many unique passwords?",
+                answers: [
+                    "Write them in a public social media post",
+                    "Use one easy password for every account",
+                    "Use a reputable password manager",
+                    "Send them to a stranger for safekeeping"
+                ],
+                correct: 2,
+                explanation: "A reputable password manager can generate and store unique passwords. Protect it with a strong master password and available security features."
+            },
+            {
+                question: "You receive a message saying you won a prize, but must pay a surprise fee to claim it. What should you do?",
+                answers: [
+                    "Pay without checking",
+                    "Send your banking details",
+                    "Verify the offer independently and treat it as suspicious",
+                    "Give the sender your OTP"
+                ],
+                correct: 2,
+                explanation: "Unexpected prize claims that demand money or sensitive details are a warning sign. Verify independently before taking action."
+            },
+            {
+                question: "What should you do if you discover that your password may have been exposed?",
+                answers: [
+                    "Keep using it everywhere",
+                    "Change it on the affected service and anywhere you reused it",
+                    "Share it with friends",
+                    "Wait until someone logs in"
+                ],
+                correct: 1,
+                explanation: "Change an exposed password promptly, update any accounts where it was reused, and enable 2FA where available."
+            },
+            {
+                question: "Which information should you be careful about sharing publicly?",
+                answers: [
+                    "Your home address and private phone number",
+                    "A general safety tip",
+                    "A public weather report",
+                    "A link to an official public service"
+                ],
+                correct: 0,
+                explanation: "Personal details such as your home address, private phone number and identity documents can put your privacy at risk."
+            },
+            {
+                question: "What is the safest response to an unfamiliar link in an unexpected message?",
+                answers: [
+                    "Open it to find out what happens",
+                    "Enter your login details to check it",
+                    "Download every attachment",
+                    "Avoid clicking and verify the message through an official channel"
+                ],
+                correct: 3,
+                explanation: "Avoid suspicious links and attachments. Use an official app or type a known website address yourself to check the message."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionNumber = document.getElementById("questionNumber");
+        const questionText = document.getElementById("questionText");
+        const answerList = document.getElementById("answerList");
+        const progressFill = document.getElementById("progressFill");
+        const quizFeedback = document.getElementById("quizFeedback");
+        const nextButton = document.getElementById("nextButton");
+        const quizContent = document.getElementById("quizContent");
+        const quizResult = document.getElementById("quizResult");
+
+        function showQuestion() {
+            answered = false;
+
+            const q = questions[currentQuestion];
+
+            questionNumber.textContent =
+                "QUESTION " + (currentQuestion + 1) + " OF " + questions.length;
+
+            questionText.textContent = q.question;
+
+            progressFill.style.width =
+                (currentQuestion / questions.length * 100) + "%";
+
+            answerList.innerHTML = "";
+            quizFeedback.style.display = "none";
+            quizFeedback.textContent = "";
+            nextButton.hidden = true;
+
+            q.answers.forEach(function (answer, index) {
+                const button = document.createElement("button");
+
+                button.type = "button";
+                button.className = "answer-button";
+                button.textContent =
+                    String.fromCharCode(65 + index) + ". " + answer;
+
+                button.addEventListener("click", function () {
+                    chooseAnswer(index);
+                });
+
+                answerList.appendChild(button);
+            });
+        }
+
+        function chooseAnswer(selectedIndex) {
+            if (answered) {
+                return;
+            }
+
+            answered = true;
+
+            const q = questions[currentQuestion];
+            const buttons = answerList.querySelectorAll("button");
+            const isCorrect = selectedIndex === q.correct;
+
+            if (isCorrect) {
+                score++;
+            }
+
+            buttons.forEach(function (button, index) {
+                button.disabled = true;
+
+                if (index === q.correct) {
+                    button.classList.add("correct");
+                } else if (index === selectedIndex) {
+                    button.classList.add("incorrect");
+                }
+            });
+
+            quizFeedback.style.display = "block";
+
+            if (isCorrect) {
+                quizFeedback.textContent =
+                    "✅ Correct! " + q.explanation;
+            } else {
+                quizFeedback.textContent =
+                    "💡 Not quite. The correct answer is " +
+                    String.fromCharCode(65 + q.correct) + ". " +
+                    q.answers[q.correct] + ". " + q.explanation;
+            }
+
+            nextButton.hidden = false;
+
+            if (currentQuestion === questions.length - 1) {
+                nextButton.textContent = "See My Final Score 🏆";
+            } else {
+                nextButton.textContent = "Next Question →";
+            }
+        }
+
+        function showResult() {
+            quizContent.hidden = true;
+            quizResult.hidden = false;
+            progressFill.style.width = "100%";
+
+            document.getElementById("finalScore").textContent =
+                score + " / " + questions.length;
+
+            let message;
+            let description;
+            let trophy;
+
+            if (score === 10) {
+                message = "🌟 Perfect Score!";
+                description = "Amazing! You answered every question correctly. Keep practising safe online habits.";
+                trophy = "🏆";
+            } else if (score >= 7) {
+                message = "💜 Cyber Safety Star!";
+                description = "Great work! Review the explanations for any questions you missed and keep learning.";
+                trophy = "🥇";
+            } else if (score >= 4) {
+                message = "🌱 You're Making Progress!";
+                description = "You're building your knowledge. Explore our learning pages and try the quiz again.";
+                trophy = "🎖️";
+            } else {
+                message = "🚀 Your Learning Journey Starts Here!";
+                description = "No worries! Visit Password Academy, Privacy Playground and Threat Detector, then try again.";
+                trophy = "🛡️";
+            }
+
+            document.getElementById("resultMessage").textContent = message;
+            document.getElementById("resultDescription").textContent = description;
+            document.getElementById("trophyEmoji").textContent = trophy;
+        }
+
+        nextButton.addEventListener("click", function () {
+            if (!answered) {
+                return;
+            }
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        document.getElementById("restartButton").addEventListener("click", function () {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+
+            quizContent.hidden = false;
+            quizResult.hidden = true;
+
+            showQuestion();
+        });
+
+        showQuestion();
+    </script>
+
+<!-- Quizzy the Cyber Star: SecureSphere mascot -->
+<div class="ss-mascot-stage">
+    <div class="ss-mascot ss-sparkle"
+         role="img"
+         aria-label="Quizzy the Cyber Star, your cyber safety quiz buddy">
+
+        <div class="ss-mascot-body">
+            <span class="ss-mascot-eye left"></span>
+            <span class="ss-mascot-eye right"></span>
+            <span class="ss-mascot-cheek left"></span>
+            <span class="ss-mascot-cheek right"></span>
+            <span class="ss-mascot-smile"></span>
+            <span class="ss-mascot-emblem">⭐</span>
+            <span class="ss-mascot-arm left"></span>
+            <span class="ss-mascot-arm right"></span>
+            <span class="ss-mascot-foot left"></span>
+            <span class="ss-mascot-foot right"></span>
+        </div>
+
+        <div class="ss-mascot-name">Quizzy the Cyber Star</div>
+    </div>
+</div>
+
+</body>
+</html>

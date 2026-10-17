@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Mini-Games | SecureSphere</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .games-hero {
+            text-align: center;
+            padding: 55px 20px 25px;
+            background: linear-gradient(135deg, #101B3D, #273B78);
+            color: white;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .games-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .games-hero p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+            color: #EAF5FF;
+        }
+
+        .games-container {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 0 18px;
+        }
+
+        .game-card {
+            background: white;
+            border: 2px solid #E3ECFF;
+            border-radius: 22px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 24px #101B3D0D;
+        }
+
+        .game-card h2 {
+            color: #273B78;
+            margin-top: 0;
+        }
+
+        .game-intro {
+            color: #53617D;
+            line-height: 1.6;
+        }
+
+        .game-question {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 20px 0 12px;
+        }
+
+        .game-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+        }
+
+        .game-option, .game-button {
+            border: 2px solid #D8E5FF;
+            border-radius: 12px;
+            padding: 13px 16px;
+            background: #F5F8FF;
+            color: #172449;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform .2s, background .2s;
+        }
+
+        .game-option:hover, .game-button:hover {
+            transform: translateY(-2px);
+            background: #EAF2FF;
+        }
+
+        .game-option:focus-visible, .game-button:focus-visible {
+            outline: 3px solid #398BFF;
+            outline-offset: 3px;
+        }
+
+        .game-option.correct {
+            background: #D9FBE8;
+            border-color: #31A66A;
+        }
+
+        .game-option.wrong {
+            background: #FFE2E8;
+            border-color: #E85C79;
+        }
+
+        .game-feedback {
+            min-height: 28px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .game-score {
+            color: #398BFF;
+            font-weight: bold;
+        }
+
+        .game-word {
+            display: inline-block;
+            padding: 8px 13px;
+            margin: 5px;
+            border-radius: 10px;
+            background: #F0E9FF;
+            color: #5736A1;
+            font-weight: bold;
+        }
+
+        .game-footer-note {
+            background: #EAF5FF;
+            padding: 18px;
+            border-radius: 15px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .game-card { padding: 18px; }
+            .games-hero { padding-top: 38px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="games-hero">
+        <p>🎮 SECURESPHERE ARCADE 🎮</p>
+        <h1>Cyber Mini-Games!</h1>
+        <p>
+            Play, learn, and become a Cyber Star!
+            Test your skills with fun challenges about passwords,
+            suspicious messages, and online safety.
+        </p>
+    </header>
+
+    <main class="games-container">
+
+        <!-- GAME 1 -->
+        <section class="game-card">
+            <h2>🔍 Game 1: Scam or Safe?</h2>
+            <p class="game-intro">
+                Read each situation and decide whether it is safe or suspicious.
+            </p>
+
+            <div class="game-question" id="scam-question">
+                A message says you won a prize and asks you to click
+                an unfamiliar link and enter your password.
+            </div>
+
+            <div class="game-options">
+                <button class="game-option" data-answer="safe">✅ Safe</button>
+                <button class="game-option" data-answer="scam">🚨 Suspicious</button>
+            </div>
+
+            <p class="game-feedback" id="scam-feedback" aria-live="polite"></p>
+            <p>Score: <span class="game-score" id="scam-score">0</span> / 5</p>
+            <button class="game-button" id="scam-next">Next challenge ➜</button>
+        </section>
+
+        <!-- GAME 2 -->
+        <section class="game-card">
+            <h2>🔐 Game 2: Password Detective</h2>
+            <p class="game-intro">
+                Pick the strongest password option. These are examples only;
+                don't use them as your real password.
+            </p>
+
+            <div class="game-question" id="password-question">
+                Which option is the best choice?
+            </div>
+
+            <div class="game-options">
+                <button class="game-option" data-password="0">password123</button>
+                <button class="game-option" data-password="1">Kitten123</button>
+                <button class="game-option" data-password="2">River!Mango7Cloud#Train</button>
+            </div>
+
+            <p class="game-feedback" id="password-feedback" aria-live="polite"></p>
+            <button class="game-button" id="password-reset">Play again ↻</button>
+        </section>
+
+        <!-- GAME 3 -->
+        <section class="game-card">
+            <h2>🕵️ Game 3: Spot the Red Flag</h2>
+            <p class="game-intro">
+                Find the warning sign in this online message.
+            </p>
+
+            <div class="game-question">
+                "URGENT! Your account will close in 10 minutes.
+                Send your OTP now to avoid losing access!"
+            </div>
+
+            <div class="game-options">
+                <button class="game-option" data-flag="urgent">🚩 Urgent pressure</button>
+                <button class="game-option" data-flag="friendly">😊 Friendly greeting</button>
+                <button class="game-option" data-flag="normal">📩 Normal update</button>
+            </div>
+
+            <p class="game-feedback" id="flag-feedback" aria-live="polite"></p>
+            <button class="game-button" id="flag-reset">Try again ↻</button>
+        </section>
+
+        <div class="game-footer-note">
+            ⭐ <strong>Remember, Cyber Star!</strong><br>
+            Never share your password or OTP with someone who contacts you unexpectedly.
+            If a message seems suspicious, verify it using the service's official website
+            or app instead of clicking its link.
+        </div>
+
+    </main>
+
+    <!-- Quizzy's mascot squad style is already in style.css -->
+    <div class="ss-mascot-stage">
+        <div class="ss-mascot ss-sparkle" role="img"
+             aria-label="Quizzy the Cyber Star, your mini-game buddy">
+            <div class="ss-mascot-body">
+                <span class="ss-mascot-eye left"></span>
+                <span class="ss-mascot-eye right"></span>
+                <span class="ss-mascot-cheek left"></span>
+                <span class="ss-mascot-cheek right"></span>
+                <span class="ss-mascot-smile"></span>
+                <span class="ss-mascot-emblem">⭐</span>
+                <span class="ss-mascot-arm left"></span>
+                <span class="ss-mascot-arm right"></span>
+                <span class="ss-mascot-foot left"></span>
+                <span class="ss-mascot-foot right"></span>
+            </div>
+            <div class="ss-mascot-name">Quizzy the Cyber Star</div>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:25px 15px; color:#53617D;">
+        <p>Made with 💙 by Sreta Debnath &amp; Priyanka Rathod</p>
+        <p><a href="index.html">← Back to SecureSphere Home</a></p>
+    </footer>
+
+    <script>
+        // GAME 1: Scam or Safe?
+        const scamChallenges = [
+            {
+                question: "A message promises a prize and asks you to enter your password through an unfamiliar link.",
+                answer: "scam",
+                explanation: "Correct! Prize messages asking for passwords are suspicious."
+            },
+            {
+                question: "You open your bank's official app yourself to check a transaction.",
+                answer: "safe",
+                explanation: "Correct! Opening the official app yourself is safer than using an unexpected message link."
+            },
+            {
+                question: "A stranger asks you to share an OTP to help you claim a reward.",
+                answer: "scam",
+                explanation: "Correct! Never share an OTP with a stranger."
+            },
+            {
+                question: "You verify a delivery update by opening the courier's official app directly.",
+                answer: "safe",
+                explanation: "Correct! Checking through the official app is a safer approach."
+            },
+            {
+                question: "An unexpected caller threatens to block your account unless you reveal your password.",
+                answer: "scam",
+                explanation: "Correct! Threats and requests for passwords are major warning signs."
+            }
+        ];
+
+        let scamIndex = 0;
+        let scamScore = 0;
+        let scamAnswered = false;
+
+        const scamQuestion = document.getElementById("scam-question");
+        const scamFeedback = document.getElementById("scam-feedback");
+        const scamScoreDisplay = document.getElementById("scam-score");
+        const scamButtons = document.querySelectorAll("[data-answer]");
+        const scamNext = document.getElementById("scam-next");
+
+        function showScamChallenge() {
+            scamQuestion.textContent = scamChallenges[scamIndex].question;
+            scamFeedback.textContent = "";
+            scamAnswered = false;
+            scamButtons.forEach(function(button) {
+                button.disabled = false;
+                button.classList.remove("correct", "wrong");
+            });
+            scamNext.textContent = scamIndex === scamChallenges.length - 1
+                ? "Play again ↻" : "Next challenge ➜";
+        }
+
+        scamButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                if (scamAnswered) return;
+                scamAnswered = true;
+
+                const challenge = scamChallenges[scamIndex];
+                const correct = button.dataset.answer === challenge.answer;
+
+                if (correct) {
+                    scamScore++;
+                    scamFeedback.textContent = "🌟 " + challenge.explanation;
+                    button.classList.add("correct");
+                } else {
+                    scamFeedback.textContent = "💡 Not quite! " + challenge.explanation;
+                    button.classList.add("wrong");
+                    scamButtons.forEach(function(option) {
+                        if (option.dataset.answer === challenge.answer) {
+                            option.classList.add("correct");
+                        }
+                    });
+                }
+
+                scamScoreDisplay.textContent = scamScore;
+                scamButtons.forEach(function(option) {
+                    option.disabled = true;
+                });
+            });
+        });
+
+        scamNext.addEventListener("click", function() {
+            if (scamIndex === scamChallenges.length - 1) {
+                scamIndex = 0;
+                scamScore = 0;
+                scamScoreDisplay.textContent = scamScore;
+            } else {
+                scamIndex++;
+            }
+            showScamChallenge();
+        });
+
+        // GAME 2: Password Detective
+        const passwordButtons = document.querySelectorAll("[data-password]");
+        const passwordFeedback = document.getElementById("password-feedback");
+        const passwordReset = document.getElementById("password-reset");
+
+        passwordButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                passwordButtons.forEach(function(option) {
+                    option.disabled = true;
+                    option.classList.remove("correct", "wrong");
+                });
+
+                if (button.dataset.password === "2") {
+                    button.classList.add("correct");
+                    passwordFeedback.textContent =
+                        "🌟 Best choice here! It is much longer and less predictable. Use unique passwords for each account.";
+                } else {
+                    button.classList.add("wrong");
+                    passwordButtons[2].classList.add("correct");
+                    passwordFeedback.textContent =
+                        "💡 Try the longer, less predictable option. Avoid common passwords and personal details.";
+                }
+            });
+        });
+
+        passwordReset.addEventListener("click", function() {
+            passwordButtons.forEach(function(button) {
+                button.disabled = false;
+                button.classList.remove("correct", "wrong");
+            });
+            passwordFeedback.textContent = "";
+        });
+
+        // GAME 3: Spot the Red Flag
+        const flagButtons = document.querySelectorAll("[data-flag]");
+        const flagFeedback = document.getElementById("flag-feedback");
+        const flagReset = document.getElementById("flag-reset");
+
+        flagButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                flagButtons.forEach(function(option) {
+                    option.disabled = true;
+                    option.classList.remove("correct", "wrong");
+                });
+
+                if (button.dataset.flag === "urgent") {
+                    button.classList.add("correct");
+                    flagFeedback.textContent =
+                        "🌟 Correct! Urgency and threats pressure people into making mistakes. Never share an OTP.";
+                } else {
+                    button.classList.add("wrong");
+                    flagButtons[0].classList.add("correct");
+                    flagFeedback.textContent =
+                        "💡 Look for the pressure tactic: the message threatens account closure in just 10 minutes.";
+                }
+            });
+        });
+
+        flagReset.addEventListener("click", function() {
+            flagButtons.forEach(function(button) {
+                button.disabled = false;
+                button.classList.remove("correct", "wrong");
+            });
+            flagFeedback.textContent = "";
+        });
+    </script>
+
+</body>
+</html>
