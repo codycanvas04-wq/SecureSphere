@@ -1,3 +1,4 @@
+
 /* SecureSphere - Shared Website Interactions */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,5 +12,38 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             alert("This feature is coming soon! Stay tuned, Cyber Star!");
         });
+    });
+});
+
+
+
+/* Hamburger menu functionality */
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const menuDropdown = document.getElementById("menuDropdown");
+
+    if (!menuToggle || !menuDropdown) return;
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = menuDropdown.classList.toggle("active");
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    document.addEventListener("click", function (event) {
+        if (
+            !menuToggle.contains(event.target) &&
+            !menuDropdown.contains(event.target)
+        ) {
+            menuDropdown.classList.remove("active");
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+        }
     });
 });
