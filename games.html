@@ -133,15 +133,38 @@
 
 <body>
 
-    <header class="games-hero">
-        <p>🎮 SECURESPHERE ARCADE 🎮</p>
-        <h1>Cyber Mini-Games!</h1>
-        <p>
-            Play, learn, and become a Cyber Star!
-            Test your skills with fun challenges about passwords,
-            suspicious messages, and online safety.
-        </p>
-    </header>
+   
+<header class="games-hero" style="position:relative;">
+    <a href="index.html"
+       style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
+        🛡️ SecureSphere
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+            aria-label="Open navigation menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <div class="menu-dropdown" id="menuDropdown">
+        <a href="index.html">Home</a>
+        <a href="passwords.html">Password Safety</a>
+        <a href="privacy.html">Privacy Protection</a>
+        <a href="threats.html">Cyber Threats</a>
+        <a href="quiz.html">Safety Quiz</a>
+        <a href="games.html">Safety Games</a>
+        <a href="rewards.html">Rewards</a>
+        <a href="checker.html">Password Checker</a>
+    </div>
+
+    <p>🎮 SECURESPHERE ARCADE 🎮</p>
+    <h1>Cyber Mini-Games!</h1>
+    <p>
+        Play, learn, and become a Cyber Star!
+        Test your skills with fun challenges about passwords,
+        suspicious messages, and online safety.
+    </p>
+</header>
+
 
     <main class="games-container">
 
@@ -403,6 +426,9 @@
             flagFeedback.textContent = "";
         });
     </script>
+
+<script src="js/script.js">
+</script>
 
 </body>
 </html>

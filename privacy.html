@@ -182,14 +182,33 @@
 
 <body>
 
-    <header style="text-align:center; padding:22px 12px;">
-        <a href="index.html"
-           style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
-            🛡️ SecureSphere
-        </a>
-        <p>Your Passwords. Your Privacy. Your Protection.</p>
-        <a href="index.html">← Back to Home</a>
-    </header>
+    
+<header style="text-align:center; padding:22px 12px; position:relative;">
+    <a href="index.html"
+       style="font-size:1.3rem; font-weight:bold; text-decoration:none;">
+        🛡️ SecureSphere
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+            aria-label="Open navigation menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <div class="menu-dropdown" id="menuDropdown">
+        <a href="index.html">Home</a>
+        <a href="passwords.html">Password Safety</a>
+        <a href="privacy.html">Privacy Protection</a>
+        <a href="threats.html">Cyber Threats</a>
+        <a href="quiz.html">Safety Quiz</a>
+        <a href="games.html">Safety Games</a>
+        <a href="rewards.html">Rewards</a>
+        <a href="checker.html">Password Checker</a>
+    </div>
+
+    <p>Your Passwords. Your Privacy. Your Protection.</p>
+    <a href="index.html">← Back to Home</a>
+</header>
+
 
     <main class="privacy-page">
 

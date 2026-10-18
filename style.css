@@ -98,6 +98,20 @@ a {
     box-shadow: 0 5px 14px #398BFF40;
 }
 
+
+/* Hamburger menu button */
+.menu-toggle {
+    display: none;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
 .navbar nav {
     display: flex;
     align-items: center;
@@ -1523,4 +1537,215 @@ a {
         padding: 8px 9px;
         font-size: .82rem;
     }
+}
+
+
+/* Hamburger menu button - visible on desktop and mobile */
+.menu-toggle {
+    display: block;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Mobile hamburger navigation */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .navbar nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+        padding: 16px 0;
+    }
+
+    .navbar nav.active {
+        display: flex;
+    }
+}
+
+
+/* Hamburger dropdown menu */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 220px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+
+.menu-dropdown.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-dropdown a {
+    display: block;
+    padding: 10px 12px;
+    color: #1f2937;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.menu-dropdown a:hover {
+    background: #f0f4ff;
+}
+
+/* Position the dropdown relative to the navigation bar */
+.navbar {
+    position: relative;
+}
+/* =================================
+   SecureSphere Light / Dark Mode
+   ================================= */
+
+/* Smooth theme transition */
+body,
+header,
+section,
+article,
+footer,
+.card,
+button,
+input,
+textarea {
+    transition: background-color 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+}
+
+/* True black dark theme */
+html[data-theme="dark"] body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] header,
+html[data-theme="dark"] main,
+html[data-theme="dark"] section,
+html[data-theme="dark"] article,
+html[data-theme="dark"] footer,
+html[data-theme="dark"] .card {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Headings and text */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] label {
+    color: #ffffff;
+}
+
+/* Links */
+html[data-theme="dark"] a {
+    color: #93c5fd;
+}
+
+/* Hamburger dropdown */
+html[data-theme="dark"] .menu-dropdown {
+    background-color: #000000;
+    border-color: #444444;
+}
+
+html[data-theme="dark"] .menu-dropdown a {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .menu-dropdown a:hover {
+    background-color: #222222;
+}
+
+/* Form fields */
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+    background-color: #111111;
+    color: #ffffff;
+    border-color: #555555;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #bbbbbb;
+}
+
+/* Light / Dark Mode Toggle Button */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+html[data-theme="dark"] .theme-toggle {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.menu-toggle {
+    position: relative;
+}
+
+
+/* Dark mode readability fix */
+html[data-theme="dark"] body,
+html[data-theme="dark"] body * {
+    color: #ffffff;
+}
+
+/* Keep buttons readable */
+html[data-theme="dark"] button,
+html[data-theme="dark"] .nav-button {
+    color: #ffffff;
+}
+
+/* Keep form fields readable */
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+    background-color: #171717;
+    color: #ffffff;
+    border-color: #666666;
+}
+
+/* Keep dropdown readable */
+html[data-theme="dark"] .menu-dropdown {
+    background-color: #111111;
+}
+
+html[data-theme="dark"] .menu-dropdown a:hover {
+    background-color: #333333;
+}
+
+/* Keep placeholder text visible */
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #cccccc;
 }
